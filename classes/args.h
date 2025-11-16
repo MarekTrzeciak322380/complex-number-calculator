@@ -11,4 +11,8 @@ public:
     std::string in_path = "";
     std::string out_path = "";
     std::string equation = "";
+
+    inline bool shouldExit(){
+        return (bool)(options & Options::exit);
+    }
 };

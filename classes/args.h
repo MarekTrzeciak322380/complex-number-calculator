@@ -10,4 +10,5 @@ public:
     Options options;
     std::string in_path = "";
     std::string out_path = "";
+    std::string equation = "";
 };

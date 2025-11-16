@@ -8,3 +8,4 @@
 
 std::string loadFromFile(std::string path);
 void inputFileHandler(Args &args);
+void saveToFile(std::string path, std::string equation);

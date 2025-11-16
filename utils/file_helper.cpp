@@ -29,3 +29,19 @@ void inputFileHandler(Args &args){
         args.options = Options::exit;
     }
 }
+
+void saveToFile(std::string path, std::string equation){
+    if(path.length() == 0){
+        return;
+    }
+
+    std::fstream file(path, std::ios::out);
+    if(!file.good()){
+        std::cout << "Blad tworzenia pliku!\r\n";   // jakoś sensownie podzielić na wyświetlanie albo błędu pliku lub braku danych
+        return;
+    }
+
+    file << equation;
+    std::cout << "Plik wyjściowy: " << path <<"\r\n";  // debug(?)
+    file.close();
+}

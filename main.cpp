@@ -22,10 +22,7 @@ int main(int argc, char const *argv[])
     }
     std::cout << "Rownanie na wejsciu: " << args.equation <<"\r\n";  // debug(?)
 
-
-    if (args.out_path.length() > 0){
-        std::cout << "Plik wyjściowy: " << args.out_path <<"\r\n";  // debug(?)
-    }
+    saveToFile(args.out_path, args.equation);
 
     std::cout << "\r\n";    // linux compensation
     return 0;

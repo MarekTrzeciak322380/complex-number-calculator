@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "../classes/options.h"
+#include "../classes/args.h"
 
 void displayHelp();
-Options argsHandler(const int &argc, const char *argv[]);
+Args argsHandler(const int &argc, const char *argv[]);

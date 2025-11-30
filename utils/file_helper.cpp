@@ -3,7 +3,7 @@
 std::string loadFromFile(std::string path){
     std::fstream file(path, std::ios::in);
     if(!file.good()){
-        // std::cout << "Blad otwierania pliku!\r\n";   // jakoś sensownie podzielić na wyświetlanie albo błędu pliku lub braku danych
+        // std::cerr << "Blad otwierania pliku!\r\n";   // jakoś sensownie podzielić na wyświetlanie albo błędu pliku lub braku danych
         return "";
     }
     
@@ -37,7 +37,7 @@ void saveToFile(std::string path, std::string equation){
 
     std::fstream file(path, std::ios::out);
     if(!file.good()){
-        std::cout << "Blad tworzenia pliku!\r\n";   // jakoś sensownie podzielić na wyświetlanie albo błędu pliku lub braku danych
+        std::cerr << "Blad tworzenia pliku!\r\n";   // jakoś sensownie podzielić na wyświetlanie albo błędu pliku lub braku danych
         return;
     }
 

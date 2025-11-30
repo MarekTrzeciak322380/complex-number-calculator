@@ -17,7 +17,7 @@ int main(int argc, char const *argv[])
     inputFileHandler(args);
     if (args.shouldExit())
     {
-        std::cout << "Blad wczytywania danych z pliku\r\n";      //debug
+        std::cerr << "Blad wczytywania danych z pliku\r\n";      //debug
         return 0;
     }
     std::cout << "Rownanie na wejsciu: " << args.equation <<"\r\n";  // debug(?)

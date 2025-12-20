@@ -22,7 +22,7 @@ void inputFileHandler(Args &args){
         return;
     }
 
-    std::cout << "Plik wejściowy: " << args.in_path <<"\r\n";  // debug(?)     
+    std::clog << "Plik wejściowy: " << args.in_path <<"\r\n";  // debug(?)     
 
     args.equation = loadFromFile(args.in_path);
     if (args.equation.length() == 0){   // Zamknięcie programu jeśli z pliku nic się nie wczytało

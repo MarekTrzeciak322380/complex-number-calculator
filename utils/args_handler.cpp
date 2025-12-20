@@ -11,9 +11,9 @@ Args argsHandler(const int &argc, const char *argv[]){
     // debug
     for (char i = 0; i < argc; i++)
     {
-        std::cout << argv[i] << " ";
+        std::clog << argv[i] << " ";
     }
-    std::cout << "\r\n";
+    std::clog << "\r\n";
     
     if (argc < 2){
         displayHelp();

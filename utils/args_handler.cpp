@@ -43,7 +43,7 @@ Args argsHandler(const int &argc, const char *argv[]){
             res.equation += argv[i];
         }
     }
-    // std::cout << res.in_path.length() << "\t" << res.equation.length();  // debug
+    // std::clog << res.in_path.length() << "\t" << res.equation.length();  // debug
 
     if(res.in_path.length() == 0 && res.equation.length() == 0){    // sprawdzamy czy otrzymaliśmy dane wejściowe
         std::cerr << "Brak danych wejsciowych!\r\n";

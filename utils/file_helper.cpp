@@ -42,6 +42,6 @@ void saveToFile(std::string path, std::string equation){
     }
 
     file << equation;
-    std::cout << "Plik wyjściowy: " << path <<"\r\n";  // debug(?)
+    std::cout << "Wynik zapisano do pliku: " << path <<"\r\n";
     file.close();
 }

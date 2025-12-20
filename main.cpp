@@ -10,14 +10,14 @@ int main(int argc, char const *argv[])
     Args args = argsHandler(argc, argv);
     if (args.shouldExit())
     {
-        std::cout << "EARLY EXIT\r\n";      //debug
+        std::clog << "EARLY EXIT\r\n";      //debug
         return 0;
     }
     
     inputFileHandler(args);
     if (args.shouldExit())
     {
-        std::cerr << "Blad wczytywania danych z pliku\r\n";      //debug
+        std::cerr << "Blad wczytywania danych z pliku\r\n";
         return 0;
     }
     std::cout << "Rownanie na wejsciu: " << args.equation <<"\r\n";  // debug(?)

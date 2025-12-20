@@ -3,9 +3,9 @@
 #include "utils/args_handler.h"
 #include "utils/file_helper.h"
 #include "classes/args.h"
+#include "classes/complex.h"
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]){
 
     Args args = argsHandler(argc, argv);
     if (args.shouldExit())

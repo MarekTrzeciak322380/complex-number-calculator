@@ -14,6 +14,7 @@ public:
     Complex(std::string str);
 
     const double abs();
+    const double arg();
 
     void printRectangular();
     void printPolar();

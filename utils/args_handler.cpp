@@ -5,6 +5,10 @@ void displayHelp(){
    std::cout << "Flagi:\r\n";
    std::cout << "-i <scierzka> - wczytuje dane wejściowe z pliku\r\n";
    std::cout << "-o <scierzka> - zapisuje wynik do pliku\r\n";
+   std::cout << "-k - rozwiazuje rownanie kwadratowe ([]x^2 + []x + [])\r\n";
+   std::cout << "-a - wyświetla wynik w postaci algebraicznej\r\n";
+   std::cout << "-t - wyświetla wynik w postaci trygonometrycznej\r\n";
+   std::cout << "-w - wyświetla wynik w postaci wykladniczej\r\n";
 }
 
 Args argsHandler(const int &argc, const char *argv[]){

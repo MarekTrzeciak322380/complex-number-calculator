@@ -1,4 +1,4 @@
-# Kalkulator liczb złożonych
+# Kalkulator liczb zespolonych
 
 ## Funkcjonalności
 - podstawowe operacje arytmetyczne (dodawanie, odejmowanie, mnożenie, dzielenie)
@@ -12,3 +12,4 @@
 | -a | wyświetla wynik w postaci algebraicznej |
 | -t | wyświetla wynik w postaci trygonometrycznej |
 | -w | wyświetla wynik w postaci wykładniczej |
+| -k | rozwiązuje równanie kwadratowe |

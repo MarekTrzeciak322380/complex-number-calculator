@@ -1,10 +1,13 @@
 # Kalkulator liczb zespolonych
 
 ## Funkcjonalności
-- podstawowe operacje arytmetyczne (dodawanie, odejmowanie, mnożenie, dzielenie)
+- wykonuje podstawowe operacje arytmetyczne (dodawanie, odejmowanie, mnożenie, dzielenie)
 - zamiana między postaciami: algebraiczną, trygonometryczną, wykładniczą
+- obliczanie rozwiązań funkcji kwadratowej, wraz z rozwiązaniami zespolonymi
 
 ## Obsługa
+`kalkulator <flagi> [równanie]`
+
 | Flaga | Opis |
 | ----- | ---- |
 | -i <ścierzka> | wczytuje dane wejściowe z pliku |

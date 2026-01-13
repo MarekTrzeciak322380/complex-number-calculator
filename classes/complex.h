@@ -1,8 +1,9 @@
+#pragma once
+
 #include <string>
+#include <sstream>
 #include <iostream>
 #include <math.h>
-
-#include "real.h"
 
 
 class Complex{
@@ -11,14 +12,14 @@ public:
 
     Complex(double real, double imaginary);
     Complex(double real);
-    Complex(std::string str);
+    // Complex(const Complex &complex);
 
     const double abs();
     const double arg();
 
-    void printRectangular();
-    void printPolar();
-    void printExponential();
+    std::string getRectangular();
+    std::string getPolar();
+    std::string getExponential();
 
 
     Complex operator+(const Complex &c){

@@ -22,7 +22,7 @@ void inputFileHandler(Args &args){
         return;
     }
 
-    std::clog << "Plik wejściowy: " << args.in_path <<"\r\n";  // debug(?)     
+    std::cout << "Plik wejściowy: " << args.in_path <<"\r\n";   
 
     args.equation = loadFromFile(args.in_path);
     if (args.equation.length() == 0){   // Zamknięcie programu jeśli z pliku nic się nie wczytało
@@ -30,18 +30,27 @@ void inputFileHandler(Args &args){
     }
 }
 
-void saveToFile(std::string path, std::string equation){
-    if(path.length() == 0){
+void saveToFile(Args &args, Complex equation){
+    if(args.out_path.length() == 0){
         return;
     }
 
-    std::fstream file(path, std::ios::out);
+    std::fstream file(args.out_path, std::ios::out);
     if(!file.good()){
         std::cerr << "Blad tworzenia pliku!\r\n";   // jakoś sensownie podzielić na wyświetlanie albo błędu pliku lub braku danych
         return;
     }
 
-    file << equation;
-    std::cout << "Wynik zapisano do pliku: " << path <<"\r\n";
+    if(args.containsFlag(Options::rectangular)){
+        file << equation.getRectangular() << "\r\n"; 
+    }
+    if(args.containsFlag(Options::polar)){
+        file << equation.getPolar() << "\r\n";
+    }
+    if(args.containsFlag(Options::exponential)){
+        file << equation.getExponential() << "\r\n"; 
+    }
+
+    std::cout << "Wynik zapisano do pliku: " << args.out_path <<"\r\n";
     file.close();
 }

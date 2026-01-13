@@ -3,6 +3,7 @@
 
 Complex::Complex(double real, double imaginary) : real{real}, imaginary{imaginary}{}
 Complex::Complex(double real) : real{real}{}
+// Complex::Complex(const Complex &c) : Complex(c){}
 // Complex::Complex(std::string str){}; to implement
 
 const double Complex::abs(){
@@ -12,17 +13,17 @@ const double Complex::arg(){
     return std::acos(real/abs());
 }
 
-void Complex::printExponential(){
-    std::cout << abs() << "e^(" << arg() << "i)\r\n"; 
-}
-void Complex::printPolar(){
-    const double argument = arg();
-    std::cout << abs() << "(cos(" << argument << "), sin(" << argument << ")i)\r\n";
+std::string Complex::getExponential(){
+    return std::to_string(abs()) + "e^(" + std::to_string(arg()) + "i)"; 
+} 
+std::string Complex::getPolar(){
+    const std::string argument = std::to_string(arg());
+    return std::to_string(abs()) + "(cos(" + argument + ") + sin(" + argument + ")i)";
     // const double absolute = abs();
     // std::cout << absolute << "(" << real / absolute << ", " << imaginary / absolute <<")\r\n";
 }
-void Complex::printRectangular(){
-    std::cout << real << " + (" << imaginary << ")i\r\n"; 
+std::string Complex::getRectangular(){
+    return  std::to_string(real) + " + (" + std::to_string(imaginary) + ")i"; 
 }
 
 

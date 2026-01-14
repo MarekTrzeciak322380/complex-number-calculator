@@ -2,6 +2,7 @@
 
 #include "utils/args_handler.h"
 #include "utils/file_helper.h"
+#include "utils/solver.h"
 #include "classes/args.h"
 #include "classes/complex.h"
 
@@ -19,8 +20,10 @@ int main(int argc, char const *argv[]){
     }
     std::cout << "Rownanie na wejsciu: " << args.equation <<"\r\n";     // debug(?)
 
+    std::vector<Complex> answers = solver(args);
+
     if(args.out_path.length() != 0){
-        saveToFile(args, Complex(1.f,3.f));
+        // savingHandler(args, answers);
     }
 
     std::cout << "\r\n";    // linux compensation

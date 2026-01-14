@@ -3,10 +3,12 @@
 #include <fstream>
 #include <string>
 #include <iostream>
+#include <vector>
 
 #include "../classes/args.h"
 #include "../classes/complex.h"
 
-std::string loadFromFile(std::string path);
+bool loadFromFile(std::string path, std::string &equation);
 void inputFileHandler(Args &args);
-void saveToFile(Args &args, Complex equation);
+void saveToFile(Args &args, std::string str);
+void savingHandler(Args &args, std::vector<Complex> &answers);

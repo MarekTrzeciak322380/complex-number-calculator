@@ -32,23 +32,37 @@ void inputFileHandler(Args &args){
     }
 }
 
-void saveToFile(Args &args, Complex equation){
+void saveToFile(Args &args, std::string str){
     std::fstream file(args.out_path, std::ios::out);
     if(!file.good()){
         std::cerr << "Blad tworzenia pliku!\r\n";
         return;
     }
 
-    if(args.containsFlag(Options::rectangular)){
-        file << equation.getRectangular() << "\r\n"; 
-    }
-    if(args.containsFlag(Options::polar)){
-        file << equation.getPolar() << "\r\n";
-    }
-    if(args.containsFlag(Options::exponential)){
-        file << equation.getExponential() << "\r\n"; 
-    }
+    file << str;
 
     std::cout << "Wynik zapisano do pliku: " << args.out_path <<"\r\n";
     file.close();
+}
+
+void savingHandler(Args &args, std::vector<Complex> &answers){
+    std::string to_save{};
+    if(args.containsFlag(Options::quadratic_function)){
+        for(Complex c : answers){
+            if(c.imaginary == 0){
+                to_save += std::to_string(c.real) + "\r\n";
+            }
+        }
+    }else{
+        if(args.containsFlag(Options::rectangular)){
+            to_save += answers[0].getRectangular() + "\r\n"; 
+        }
+        if(args.containsFlag(Options::polar)){
+            to_save += answers[0].getPolar() + "\r\n";
+        }
+        if(args.containsFlag(Options::exponential)){
+            to_save += answers[0].getExponential() + "\r\n"; 
+        }
+    }
+    saveToFile(args, to_save);
 }

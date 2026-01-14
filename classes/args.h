@@ -15,7 +15,7 @@ public:
     inline const bool shouldExit(){
         return (bool)(options & Options::exit);
     }
-    const inline bool containsFlag(const Options flag){
+    inline const bool containsFlag(const Options flag){
         return (bool)(options & flag);
     }
 };

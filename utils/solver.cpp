@@ -138,42 +138,48 @@ std::vector<Complex> solveRPN(std::queue<std::string> equation){
     std::stack<double> stack{{}};
     const std::array<char, 6> signs = {'-', '+', '*', '/', '^', '='};
 
-    if(equation.front() == "-"){
-        stack.emplace(0);
-    }
-
-    // while(!equation.empty()){
-    //     if(std::find(signs.begin(), signs.end(), equation.front()) != signs.end()){   //znak
-    //         double a = stack.top();
-    //         stack.pop();
-    //         double b = stack.top();
-    //         stack.pop();
-    //         switch (equation.front()[0]){
-    //             case '+':
-    //                 stack.emplace(b+a);    
-    //                 break;
-    //             case '-':
-    //                 stack.emplace(b-a);    
-    //                 break;
-    //             case '/':
-    //                 stack.emplace(b/a);    
-    //                 break;
-    //             case '*':
-    //                 stack.emplace(b*a);    
-    //                 break;
-    //             case '^':
-    //                 stack.emplace(pow(b,a));    
-    //                 break;
-                
-    //             default:
-    //             std::cerr << "ZLE!\r\n";
-    //                 break;
-    //         }
-    //     }else{
-    //         stack.push(std::stoi(equation.front()));
-    //     }
+    // if(equation.front() == "-"){
+    //     stack.emplace(0);
     // }
 
+    while(!equation.empty()){
+        if(std::find(signs.begin(), signs.end(), equation.front()[0]) != signs.end()){   //znak
+            double a = stack.top();
+            stack.pop();
+            double b = stack.top();
+            stack.pop();
+            // std::clog << a << " " << b << "\t" << stack.size() << "\r\n"; 
+            double result;
+            switch (equation.front()[0]){
+                case '+':
+                    result = b+a;    
+                    break;
+                case '-':
+                    result = b-a;    
+                    break;
+                case '/':
+                    result = b/a;    
+                    break;
+                case '*':
+                    result = b*a;    
+                    break;
+                case '^':
+                    result = pow(b,a);    
+                    break;
+                default:
+                    std::cerr << "Blad rozwiazywania!\r\n";
+                    throw;
+            }
+            stack.emplace(result);    
+            
+        }else{
+            stack.push(std::stoi(equation.front()));
+            // std::clog << "added: " << stack.top() << "\r\n";
+        }
+        equation.pop();
+    }
+
+    std::clog << stack.top();
 
     return res;
 }

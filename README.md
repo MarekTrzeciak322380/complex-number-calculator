@@ -20,7 +20,7 @@
 Gdy część urojona jest zerowa, wynik jest wyświetlany tylko pod postacią rzeczywistą.
 
 ### Przykłady obsługi
-input: `kalkulator --awt 1+3`
+input: `kalkulator --awt 1+3i`
 
 output:
 ```

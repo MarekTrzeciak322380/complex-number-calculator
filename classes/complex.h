@@ -12,7 +12,6 @@ public:
 
     Complex(double real, double imaginary);
     Complex(double real);
-    // Complex(const Complex &complex);
 
     const double abs();
     const double arg();

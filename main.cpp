@@ -19,7 +19,9 @@ int main(int argc, char const *argv[]){
     }
     std::cout << "Rownanie na wejsciu: " << args.equation <<"\r\n";     // debug(?)
 
-    saveToFile(args, Complex(1.f,3.f));
+    if(args.out_path.length() != 0){
+        saveToFile(args, Complex(1.f,3.f));
+    }
 
     std::cout << "\r\n";    // linux compensation
     return 0;

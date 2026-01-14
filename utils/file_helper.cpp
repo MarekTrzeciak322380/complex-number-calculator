@@ -33,10 +33,6 @@ void inputFileHandler(Args &args){
 }
 
 void saveToFile(Args &args, Complex equation){
-    if(args.out_path.length() == 0){
-        return;
-    }
-
     std::fstream file(args.out_path, std::ios::out);
     if(!file.good()){
         std::cerr << "Blad tworzenia pliku!\r\n";

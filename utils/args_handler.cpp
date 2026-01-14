@@ -35,10 +35,10 @@ bool validateEquationChars(const std::string equation, const Options options){
 
 Args argsHandler(const int &argc, const char *argv[]){
     // debug
-    for (char i = 0; i < argc; i++){
-        std::clog << argv[i] << " ";
-    }
-    std::clog << "\r\n";
+    // for (char i = 0; i < argc; i++){
+    //     std::clog << argv[i] << " ";
+    // }
+    // std::clog << "\r\n";
     
     if (argc < 2){
         displayHelp();

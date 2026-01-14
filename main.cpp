@@ -33,9 +33,9 @@ int main(int argc, char const *argv[]){
 
     savingHandler(args, answers);
     
-    std::cout << answers[0].real << "\t" << answers[0].imaginary << "\r\n";
-
-    if(args.containsFlag(Options::rectangular)){
+    // std::clog << answers[0].real << "\t" << answers[0].imaginary << "\r\n";
+    std::cout << "WYNIKI:\r\n";
+    if(args.containsFlag(Options::rectangular) || (!args.containsFlag(Options::rectangular) && !args.containsFlag(Options::polar) && !args.containsFlag(Options::exponential))){
         std::cout << answers[0].getRectangular() + "\r\n"; 
     }
     if(args.containsFlag(Options::polar)){

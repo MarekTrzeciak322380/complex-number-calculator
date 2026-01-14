@@ -6,7 +6,8 @@ bool loadFromFile(std::string path, std::string &equation){
         return false;
     }
         
-    std::string str{};    
+    equation = "";
+    std::string str{};
     while(file >> str){
         equation += str;
     }
@@ -47,11 +48,10 @@ void saveToFile(const Args &args, std::string str){
 
 void savingHandler(const Args &args, std::vector<Complex> &answers){
     if(args.out_path.length() == 0){
-        std::clog << "Źle length\r\n";
         return;   
     }
     if(answers.size() == 0){
-        std::clog << "Źle\r\n";
+        std::clog << "Problem z rozwiązaniem\r\n";
         return;   
     }
 

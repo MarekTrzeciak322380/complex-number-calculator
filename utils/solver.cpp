@@ -177,7 +177,7 @@ std::vector<Complex> solveRPN(std::queue<std::string> equation){
         equation.pop();
     }
 
-    std::clog << stack.top();
+    // std::clog << stack.top();
     res.push_back(stack.top());
     return res;
 }

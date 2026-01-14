@@ -13,7 +13,7 @@ const double Complex::arg(){
 
 std::string Complex::getExponential(){
     if(imaginary == 0){
-        return std::to_string(real);
+        return std::to_string(real); // std::format?
     }
     return std::to_string(abs()) + "*e^(" + std::to_string(arg()) + "*i)"; 
 } 

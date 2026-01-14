@@ -1,20 +1,18 @@
 #include "file_helper.h"
 
-std::string loadFromFile(std::string path){
+bool loadFromFile(std::string path, std::string &equation){
     std::fstream file(path, std::ios::in);
     if(!file.good()){
-        // std::cerr << "Blad otwierania pliku!\r\n";   // jakoś sensownie podzielić na wyświetlanie albo błędu pliku lub braku danych
-        return "";
+        return false;
     }
-    
-    std::string res{};    
+        
     std::string str{};    
     while(file >> str){
-        res += str;
+        equation += str;
     }
 
     file.close();
-    return res;
+    return true;
 }
 
 void inputFileHandler(Args &args){
@@ -22,10 +20,14 @@ void inputFileHandler(Args &args){
         return;
     }
 
-    std::cout << "Plik wejściowy: " << args.in_path <<"\r\n";   
+    std::cout << "Plik wejsciowy: " << args.in_path <<"\r\n";   
 
-    args.equation = loadFromFile(args.in_path);
+    if(!loadFromFile(args.in_path, args.equation)){
+        std::cerr << "Blad otwierania pliku!\r\n";
+        args.options = Options::exit;
+    }
     if (args.equation.length() == 0){   // Zamknięcie programu jeśli z pliku nic się nie wczytało
+        std::cerr << "Blad wczytywania danych z pliku\r\n";
         args.options = Options::exit;
     }
 }
@@ -37,7 +39,7 @@ void saveToFile(Args &args, Complex equation){
 
     std::fstream file(args.out_path, std::ios::out);
     if(!file.good()){
-        std::cerr << "Blad tworzenia pliku!\r\n";   // jakoś sensownie podzielić na wyświetlanie albo błędu pliku lub braku danych
+        std::cerr << "Blad tworzenia pliku!\r\n";
         return;
     }
 

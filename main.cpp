@@ -8,18 +8,16 @@
 int main(int argc, char const *argv[]){
 
     Args args = argsHandler(argc, argv);
-    if (args.containsFlag(Options::exit))
-    {
+    if (args.containsFlag(Options::exit)){
         std::clog << "EARLY EXIT\r\n";      //debug
         return 0;
     }
     
     inputFileHandler(args);
     if (args.shouldExit()){
-        std::cerr << "Blad wczytywania danych z pliku\r\n";
         return 0;
     }
-    std::cout << "Rownanie na wejsciu: " << args.equation <<"\r\n";  // debug(?)
+    std::cout << "Rownanie na wejsciu: " << args.equation <<"\r\n";     // debug(?)
 
     saveToFile(args, Complex(1.f,3.f));
 

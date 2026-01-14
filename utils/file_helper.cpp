@@ -32,7 +32,7 @@ void inputFileHandler(Args &args){
     }
 }
 
-void saveToFile(Args &args, std::string str){
+void saveToFile(const Args &args, std::string str){
     std::fstream file(args.out_path, std::ios::out);
     if(!file.good()){
         std::cerr << "Blad tworzenia pliku!\r\n";
@@ -45,7 +45,16 @@ void saveToFile(Args &args, std::string str){
     file.close();
 }
 
-void savingHandler(Args &args, std::vector<Complex> &answers){
+void savingHandler(const Args &args, std::vector<Complex> &answers){
+    if(args.out_path.length() == 0){
+        std::clog << "Źle length\r\n";
+        return;   
+    }
+    if(answers.size() == 0){
+        std::clog << "Źle\r\n";
+        return;   
+    }
+
     std::string to_save{};
     if(args.containsFlag(Options::quadratic_function)){
         for(Complex c : answers){

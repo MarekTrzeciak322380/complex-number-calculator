@@ -11,7 +11,7 @@
 #include "../classes/complex.h"
 #include "../classes/args.h"
 
-std::vector<Complex> solver(Args &args);
+std::vector<Complex> solver(const Args &args);
 
 std::vector<Complex> quadratic_function(std::string equation);
 std::queue<std::string> getRPN(std::string equation);

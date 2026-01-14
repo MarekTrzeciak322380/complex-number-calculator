@@ -1,7 +1,7 @@
 #include "solver.h"
 
 
-std::vector<Complex> solver(Args &args){
+std::vector<Complex> solver(const Args &args){
     std::vector<Complex> answers{};
     if(args.containsFlag(Options::quadratic_function)){
         answers = quadratic_function(args.equation);
@@ -138,10 +138,8 @@ std::vector<Complex> solveRPN(std::queue<std::string> equation){
     std::stack<double> stack{{}};
     const std::array<char, 6> signs = {'-', '+', '*', '/', '^', '='};
 
-    // if(equation.front() == "-"){
-    //     stack.emplace(0);
-    // }
-
+    // sprawdzanie czy minus na początku ale nie na początku :c
+    
     while(!equation.empty()){
         if(std::find(signs.begin(), signs.end(), equation.front()[0]) != signs.end()){   //znak
             double a = stack.top();
@@ -173,13 +171,13 @@ std::vector<Complex> solveRPN(std::queue<std::string> equation){
             stack.emplace(result);    
             
         }else{
-            stack.push(std::stoi(equation.front()));
+            stack.push(std::stod(equation.front()));
             // std::clog << "added: " << stack.top() << "\r\n";
         }
         equation.pop();
     }
 
     std::clog << stack.top();
-
+    res.push_back(stack.top());
     return res;
 }

@@ -12,10 +12,10 @@ public:
     std::string out_path = "";
     std::string equation = "";
 
-    inline const bool shouldExit(){
+    inline bool shouldExit(){
         return (bool)(options & Options::exit);
     }
-    inline const bool containsFlag(const Options flag){
+    inline bool containsFlag(const Options flag) const {
         return (bool)(options & flag);
     }
 };

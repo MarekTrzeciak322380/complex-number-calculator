@@ -10,5 +10,5 @@
 
 bool loadFromFile(std::string path, std::string &equation);
 void inputFileHandler(Args &args);
-void saveToFile(Args &args, std::string str);
-void savingHandler(Args &args, std::vector<Complex> &answers);
+void saveToFile(const Args &args, std::string str);
+void savingHandler(const Args &args, std::vector<Complex> &answers);

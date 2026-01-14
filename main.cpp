@@ -8,14 +8,14 @@
 
 int main(int argc, char const *argv[]){
 
-    std::queue<std::string> a = getRPN("3+4*2/(1-5)^2");
+    // std::queue<std::string> a = getRPN("-3+4*2");
     // for (std::string s = a.front(); !a.empty() ; a.pop()){
     //     std::cout << a.front() << " ";
     // }
-    solveRPN(a);
+    // solveRPN(a);
 
-    std::cout << "\r\n";
-    return 0;
+    // std::cout << "\r\n";
+    // return 0;
 
     Args args = argsHandler(argc, argv);
     if (args.containsFlag(Options::exit)){
@@ -31,8 +31,18 @@ int main(int argc, char const *argv[]){
 
     std::vector<Complex> answers = solver(args);
 
-    if(args.out_path.length() != 0){
-        // savingHandler(args, answers);
+    savingHandler(args, answers);
+    
+    std::cout << answers[0].real << "\t" << answers[0].imaginary << "\r\n";
+
+    if(args.containsFlag(Options::rectangular)){
+        std::cout << answers[0].getRectangular() + "\r\n"; 
+    }
+    if(args.containsFlag(Options::polar)){
+        std::cout << answers[0].getPolar() + "\r\n";
+    }
+    if(args.containsFlag(Options::exponential)){
+        std::cout << answers[0].getExponential() + "\r\n"; 
     }
 
     std::cout << "\r\n";    // linux compensation

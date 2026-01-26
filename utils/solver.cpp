@@ -15,8 +15,44 @@ std::vector<Complex> solver(const Args &args){
 std::array<double, 3> getQuadraticFunction(std::string equation){
     std::array<double, 3> res = {};
 
-    int x2 = equation.find("x^2");
+    const int x2 = equation.find("x^2");
+    if(x2 == 0|| equation[x2-1] == '+'){
+        res[0] = 1;
+    }else if(x2 > 0){
+        if(x2 == 1 && equation[x2-1] == '-'){
+            res[0] = -1;
+        }else{
+            res[0] = std::stod(equation.substr(0, x2));
+        }
+    }
+    
     int x1 = equation.find_last_of("x");
+    if(x1 == 0 || equation[x1-1] == '+'){
+        res[1] = 1;
+    }else if(x1 > 0 && x1 != x2){
+        if(equation[x1-1] == '-'){
+            res[1] = -1;
+        }else{
+            if (x2 >= 0){
+                res[1] = std::stod(equation.substr(x2+3, x1-x2-3));
+            }else{
+                res[1] = std::stod(equation.substr(0, x1-x2));
+            }
+            
+        }
+    }
+    
+    // std::clog << "x1 " << x1 << " " << equation.length()-1 << "\r\n";
+    // std::clog << "x2 " << x2 << " " << equation.length()-3 << "\r\n";
+
+    std::clog << equation.substr(x1+1) << "\r\n";
+    if(x1 != equation.length() - 1 && x2 != equation.length() - 1){
+        if (x2 == x1){
+            res[2] = std::stod(equation.substr(x2+3));
+        }else{
+            res[2] = std::stod(equation.substr(x1+1));
+        }
+    }
 
     // std::clog << x2 << " " << x1 << "\r\n";    
     // std::clog << equation.substr(0, x2) << "\r\n";
@@ -24,9 +60,6 @@ std::array<double, 3> getQuadraticFunction(std::string equation){
     // std::clog << equation.substr(x1+1) << "\r\n";
 
 
-    res[0] = std::stod(equation.substr(0, x2));
-    res[1] = std::stod(equation.substr(x2+3, x1-x2-3));
-    res[2] = std::stod(equation.substr(x1+1));
 
     for (auto a : res){
         std::clog << a << " ";
@@ -36,7 +69,19 @@ std::array<double, 3> getQuadraticFunction(std::string equation){
 }
 
 std::vector<Complex> solveQuadraticFunction(const double a, const double b, const double c){
+
+    if (a == 0){    
+        if (b == 0){
+            if (c == 0){
+                return {{INFINITY}};
+            }
+            return {{NAN}};
+        }
+        return {{-c/b}};
+    }    
+
     std::vector<Complex> res{}; 
+
     const double delta = b*b - 4 * a * c;
     if (delta == 0){
         const double x0 = (std::sqrt(delta) - b) / 2 / a;
@@ -53,12 +98,12 @@ std::vector<Complex> solveQuadraticFunction(const double a, const double b, cons
         res.push_back(x1);
         res.push_back(x2);
     }
-    // std::clog << a << " " << b << " " << c << " " << delta << "\r\n";
-    // std::clog << "res:\t\t";
-    // for(auto a : res){
-    //     std::clog << a.getRectangular() << " ";
-    // }
-    // std::clog << "\r\n";
+    std::clog << a << " " << b << " " << c << " " << delta << "\r\n";
+    std::clog << "res:\t\t";
+    for(auto a : res){
+        std::clog << a.getRectangular() << " ";
+    }
+    std::clog << "\r\n";
     
     return res;
 }

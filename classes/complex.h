@@ -12,12 +12,12 @@ public:
     Complex(double real, double imaginary);
     Complex(double real);
 
-    const double abs();
-    const double arg();
+    double abs() const;
+    double arg() const;
 
-    std::string getRectangular();
-    std::string getPolar();
-    std::string getExponential();
+    std::string getRectangular() const;
+    std::string getPolar() const;
+    std::string getExponential() const;
 
 
     Complex operator+(const Complex &c){

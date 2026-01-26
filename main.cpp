@@ -3,6 +3,7 @@
 #include "utils/args_handler.h"
 #include "utils/file_helper.h"
 #include "utils/solver.h"
+#include "utils/display.h"
 #include "classes/args.h"
 #include "classes/complex.h"
 
@@ -32,18 +33,9 @@ int main(int argc, char const *argv[]){
     std::vector<Complex> answers = solver(args);
 
     savingHandler(args, answers);
+    resultDisplay(args, answers);
     
-    // std::clog << answers[0].real << "\t" << answers[0].imaginary << "\r\n";
-    std::cout << "WYNIKI:\r\n";
-    if(args.containsFlag(Options::rectangular) || (!args.containsFlag(Options::rectangular) && !args.containsFlag(Options::polar) && !args.containsFlag(Options::exponential))){
-        std::cout << answers[0].getRectangular() + "\r\n"; 
-    }
-    if(args.containsFlag(Options::polar)){
-        std::cout << answers[0].getPolar() + "\r\n";
-    }
-    if(args.containsFlag(Options::exponential)){
-        std::cout << answers[0].getExponential() + "\r\n"; 
-    }
+
 
     std::cout << "\r\n";    // linux compensation
     return 0;

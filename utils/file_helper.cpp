@@ -46,7 +46,7 @@ void saveToFile(const Args &args, std::string str){
     file.close();
 }
 
-void savingHandler(const Args &args, std::vector<Complex> &answers){
+void savingHandler(const Args &args, const std::vector<Complex> &answers){
     if(args.out_path.length() == 0){
         return;   
     }

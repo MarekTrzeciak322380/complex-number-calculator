@@ -4,20 +4,40 @@
 std::vector<Complex> solver(const Args &args){
     std::vector<Complex> answers{};
     if(args.containsFlag(Options::quadratic_function)){
-        answers = quadratic_function(args.equation);
+        const std::array<double, 3> nums = getQuadraticFunction(args.equation); 
+        answers = solveQuadraticFunction(nums[0], nums[1], nums[2]);
     }else{
         answers = solveRPN(getRPN(args.equation));
     }
     return answers;
 }
 
-std::vector<Complex> quadratic_function(std::string equation){
+std::array<double, 3> getQuadraticFunction(std::string equation){
+    std::array<double, 3> res = {};
 
-    const double a = 1; 
-    const double b = 2;
-    const double c = 3;
+    int x2 = equation.find("x^2");
+    int x1 = equation.find_last_of("x");
+
+    // std::clog << x2 << " " << x1 << "\r\n";    
+    // std::clog << equation.substr(0, x2) << "\r\n";
+    // std::clog << equation.substr(x2+3, x1-x2-3) << "\r\n";
+    // std::clog << equation.substr(x1+1) << "\r\n";
+
+
+    res[0] = std::stod(equation.substr(0, x2));
+    res[1] = std::stod(equation.substr(x2+3, x1-x2-3));
+    res[2] = std::stod(equation.substr(x1+1));
+
+    for (auto a : res){
+        std::clog << a << " ";
+    }
+    std::clog << "\r\n";
+    return res;
+}
+
+std::vector<Complex> solveQuadraticFunction(const double a, const double b, const double c){
     std::vector<Complex> res{}; 
-    const double delta = b*b + 4 * a * c;
+    const double delta = b*b - 4 * a * c;
     if (delta == 0){
         const double x0 = (std::sqrt(delta) - b) / 2 / a;
         res.push_back(x0);
@@ -25,14 +45,20 @@ std::vector<Complex> quadratic_function(std::string equation){
         const double x1 = (-std::sqrt(delta) - b) / 2 / a;
         const double x2 = (std::sqrt(delta) - b) / 2 / a;
         res.push_back(x1);
-        res.push_back(x2);       
+        res.push_back(x2);
     }else{
-        Complex delta_squared(0, std::sqrt(delta));
-        Complex x1 = (-delta_squared - b) / 2 / a;
-        Complex x2 = (delta_squared - b) / 2 / a;
+        Complex delta_sqrt(0, std::sqrt(delta));
+        Complex x1 = (-delta_sqrt - b) / 2 / a;
+        Complex x2 = (delta_sqrt - b) / 2 / a;
         res.push_back(x1);
         res.push_back(x2);
     }
+    // std::clog << a << " " << b << " " << c << " " << delta << "\r\n";
+    // std::clog << "res:\t\t";
+    // for(auto a : res){
+    //     std::clog << a.getRectangular() << " ";
+    // }
+    // std::clog << "\r\n";
     
     return res;
 }

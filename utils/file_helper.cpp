@@ -55,14 +55,16 @@ void savingHandler(const Args &args, const std::vector<Complex> &answers){
         return;   
     }
 
-    std::string to_save{};
+    std::string to_save = args.equation;
     if(args.containsFlag(Options::quadratic_function)){
+        to_save += " = 0 dla:\r\n";
         for(Complex c : answers){
             if(c.imaginary == 0){
                 to_save += std::to_string(c.real) + "\r\n";
             }
         }
     }else{
+        to_save += " =\r\n";
         if(args.containsFlag(Options::rectangular)){
             to_save += answers[0].getRectangular() + "\r\n"; 
         }

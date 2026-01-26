@@ -13,6 +13,8 @@
 
 std::vector<Complex> solver(const Args &args);
 
-std::vector<Complex> quadratic_function(std::string equation);
+std::array<double, 3> getQuadraticFunction(std::string equation);
+std::vector<Complex> solveQuadraticFunction(double a, double b, double c);  // <a>x^2 + <b>x + <c> = 0
+
 std::queue<std::string> getRPN(std::string equation);
 std::vector<Complex> solveRPN(std::queue<std::string> equation);

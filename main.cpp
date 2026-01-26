@@ -15,6 +15,8 @@ int main(int argc, char const *argv[]){
     // }
     // solveRPN(a);
 
+    // getQuadraticFunction("2x^2+10x-56");
+
     // std::cout << "\r\n";
     // return 0;
 
@@ -32,9 +34,14 @@ int main(int argc, char const *argv[]){
 
     std::vector<Complex> answers = solver(args);
 
+    // std::clog << "answers:\t\t";
+    // for(auto a : answers){
+    //     std::clog << a.getRectangular() << " ";
+    // }
+    // std::clog << "\r\n";
+
     savingHandler(args, answers);
-    resultDisplay(args, answers);
-    
+    resultDisplay(args, answers);  
 
 
     std::cout << "\r\n";    // linux compensation

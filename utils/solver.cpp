@@ -41,9 +41,6 @@ std::array<double, 3> getQuadraticFunction(std::string equation){
             
         }
     }
-    
-    // std::clog << "x1 " << x1 << " " << equation.length()-1 << "\r\n";
-    // std::clog << "x2 " << x2 << " " << equation.length()-3 << "\r\n";
 
     std::clog << equation.substr(x1+1) << "\r\n";
     if(x1 != equation.length() - 1 && x2 != equation.length() - 1){
@@ -59,12 +56,11 @@ std::array<double, 3> getQuadraticFunction(std::string equation){
     // std::clog << equation.substr(x2+3, x1-x2-3) << "\r\n";
     // std::clog << equation.substr(x1+1) << "\r\n";
 
-
-
-    for (auto a : res){
-        std::clog << a << " ";
-    }
-    std::clog << "\r\n";
+    // for (auto a : res){
+    //     std::clog << a << " ";
+    // }
+    // std::clog << "\r\n";
+    
     return res;
 }
 
@@ -92,18 +88,19 @@ std::vector<Complex> solveQuadraticFunction(const double a, const double b, cons
         res.push_back(x1);
         res.push_back(x2);
     }else{
-        Complex delta_sqrt(0, std::sqrt(delta));
+        Complex delta_sqrt(0, std::sqrt(-delta));
         Complex x1 = (-delta_sqrt - b) / 2 / a;
         Complex x2 = (delta_sqrt - b) / 2 / a;
         res.push_back(x1);
         res.push_back(x2);
     }
-    std::clog << a << " " << b << " " << c << " " << delta << "\r\n";
-    std::clog << "res:\t\t";
-    for(auto a : res){
-        std::clog << a.getRectangular() << " ";
-    }
-    std::clog << "\r\n";
+
+    // std::clog << a << " " << b << " " << c << " " << delta << "\r\n";
+    // std::clog << "res:\t\t";
+    // for(auto a : res){
+    //     std::clog << a.getRectangular() << " ";
+    // }
+    // std::clog << "\r\n";
     
     return res;
 }

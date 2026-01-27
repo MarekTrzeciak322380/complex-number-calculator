@@ -59,9 +59,7 @@ void savingHandler(const Args &args, const std::vector<Complex> &answers){
     if(args.containsFlag(Options::quadratic_function)){
         to_save += " = 0 dla:\r\n";
         for(Complex c : answers){
-            if(c.imaginary == 0){
-                to_save += std::to_string(c.real) + "\r\n";
-            }
+            to_save += "x = " + c.getRectangular() + "\r\n";       
         }
     }else{
         to_save += " =\r\n";

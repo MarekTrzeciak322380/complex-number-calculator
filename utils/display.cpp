@@ -5,7 +5,7 @@ void resultDisplay(const Args &args, const std::vector<Complex> &answers){
     if(args.containsFlag(Options::quadratic_function)){
         std::cout << args.equation << " = 0 dla:\r\n";
         for(Complex c : answers){
-            std::cout << c.getRectangular() << "\r\n";
+            std::cout << "x = " << c.getRectangular() << "\r\n";
         }
     }else{
         std::cout << "WYNIKI:\r\n";

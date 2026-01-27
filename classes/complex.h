@@ -11,6 +11,7 @@ public:
 
     Complex(double real, double imaginary);
     Complex(double real);
+    Complex();
 
     double abs() const;
     double arg() const;

@@ -17,6 +17,15 @@ int main(int argc, char const *argv[]){
 
     // getQuadraticFunction("2x^2+10x-56");
 
+    // Complex a(1,2);
+    // Complex b(-2,-4);
+
+    // a = -a;
+    // b = -b;
+
+    // std::cout << a.getRectangular() << "\r\n";
+    // std::cout << b.getRectangular() << "\r\n";
+
     // std::cout << "\r\n";
     // return 0;
 

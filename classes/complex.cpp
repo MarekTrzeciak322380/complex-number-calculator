@@ -3,6 +3,7 @@
 
 Complex::Complex(double real, double imaginary) : real{real}, imaginary{imaginary}{}
 Complex::Complex(double real) : real{real}, imaginary{0}{}
+Complex::Complex() : real{0}, imaginary{0}{}
 
 double Complex::abs() const{
     return (std::sqrt(real*real + imaginary*imaginary));

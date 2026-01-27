@@ -123,7 +123,7 @@ std::queue<std::string> getRPN(std::string equation){
             if(!stack.empty()){
                 std::string top = stack.top(); 
                 if(sub[0] == '-'){
-                    while(top == "+" || top == "*" || top == "/" || top == "^"){
+                    while(top == "-" ||top == "+" || top == "*" || top == "/" || top == "^"){
                         res.emplace(top);
                         stack.pop();
                         if(stack.empty()){
@@ -132,7 +132,7 @@ std::queue<std::string> getRPN(std::string equation){
                         top = stack.top();
                     }
                 }else if(sub[0] == '+'){
-                    while(top == "*" || top == "/" || top == "^"){
+                    while(top == "-" ||top == "+" || top == "*" || top == "/" || top == "^"){
                         res.emplace(top);
                         stack.pop();
                         if(stack.empty()){
@@ -141,7 +141,7 @@ std::queue<std::string> getRPN(std::string equation){
                         top = stack.top();
                     }
                 }else if(sub[0] == '/'){
-                    while(top == "*" || top == "^"){
+                    while(top == "/" || top == "*" || top == "^"){
                         res.emplace(top);
                         stack.pop();
                         if(stack.empty()){
@@ -149,7 +149,7 @@ std::queue<std::string> getRPN(std::string equation){
                         }
                         top = stack.top();
                     }
-                }else if(sub[0] == '*'){
+                }else if(top == "/" || top == "*" ||){
                     while(top == "^"){
                         res.emplace(top);
                         stack.pop();
@@ -183,6 +183,8 @@ std::queue<std::string> getRPN(std::string equation){
                 i++;
             }
             res.emplace(sub);
+        }else if(sub[0] == 'i'){
+            res.emplace("i");
         }else{
             std::cerr << "Blad przy rozwiazywaniu!\r\n";
         }
@@ -203,45 +205,61 @@ std::queue<std::string> getRPN(std::string equation){
 
 std::vector<Complex> solveRPN(std::queue<std::string> equation){
     std::vector<Complex> res{};
-    std::stack<double> stack{{}};
+    std::stack<Complex> stack{{}};
     const std::array<char, 6> signs = {'-', '+', '*', '/', '^', '='};
 
-    // sprawdzanie czy minus na początku ale nie na początku :c
+    std::queue<std::string> a = equation;
+    for (std::string s = a.front(); !a.empty() ; a.pop()){
+        std::clog << a.front() << " ";
+    }
+    std::clog << "\r\n";
     
+
+    // sprawdzanie czy minus na początku ale nie na początku :c
     while(!equation.empty()){
         if(std::find(signs.begin(), signs.end(), equation.front()[0]) != signs.end()){   //znak
-            double a = stack.top();
+            Complex a = stack.top();
             stack.pop();
-            double b = stack.top();
+            Complex b = stack.top();
             stack.pop();
             // std::clog << a << " " << b << "\t" << stack.size() << "\r\n"; 
-            double result;
+            Complex result(0,0);
             switch (equation.front()[0]){
                 case '+':
-                    result = b+a;    
+                    result = b+a;
                     break;
                 case '-':
-                    result = b-a;    
+                    result = b-a;
                     break;
                 case '/':
-                    result = b/a;    
+                    result = b/a;
                     break;
                 case '*':
-                    result = b*a;    
+                    result = b*a;
                     break;
                 case '^':
-                    result = pow(b,a);    
+                    result = pow(b.real, a.real);
                     break;
                 default:
                     std::cerr << "Blad rozwiazywania!\r\n";
                     throw;
             }
+            std::clog << b.getRectangular() << "\r\n";
+            std::clog << equation.front() << "\r\n";
+            std::clog << a.getRectangular() << "\r\n\n";
             stack.emplace(result);    
             
         }else{
-            stack.push(std::stod(equation.front()));
-            // std::clog << "added: " << stack.top() << "\r\n";
+            if (equation.front() == "i"){
+                stack.push(Complex(0,1));
+            }else{
+                stack.push(std::stod(equation.front()));
+            }
+            // std::clog << "added: " << stack.top().getRectangular() << "\r\n";
         }
+        // std::clog << equation.front() << "\r\n";
+        // std::clog << "obecnie góra " << stack.top().getRectangular() << "\r\n";
+
         equation.pop();
     }
 

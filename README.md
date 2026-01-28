@@ -159,7 +159,7 @@ Aplikacja poprawnie realizuje podstawowe założenia: operacje wejścia/wyjścia
     - Przyzwolenie na zaczynanie równania od minusa
     - Ignorowanie białych znaków
 - Wyświetlanie wyników z dynamicznym/podanym przez użytkownika zaokrągleniem, obecnie jest to 6 cyfr po przecinku. 
-- Dodanie możliwości wyświetlania wyniku w przyjaznej postaci równania arytmetycznego np. 2+33.
+- Dodanie możliwości wyświetlania wyniku w przyjaznej postaci równania arytmetycznego np. 2+3sqrt(3).
 - Użycie innego algorytmu niż ONP, obecnie generuje to dodatkową potrzebę przekształcenia równania z wejścia na postać ONP i dopiero potem obliczenie wyniku. Można od razu przeliczać równanie na wynik.
 - Utworzenie struktury opisującej lepiej operatory przy obsłudze ONP
 

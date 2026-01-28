@@ -42,7 +42,6 @@ std::array<double, 3> getQuadraticFunction(std::string equation){
         }
     }
 
-    // std::clog << equation.substr(x1+1) << "\r\n";
     if(x1 != equation.length() - 1 && x2 != equation.length() - 1){
         if (x2 == x1){
             res[2] = std::stod(equation.substr(x2+3));
@@ -50,16 +49,6 @@ std::array<double, 3> getQuadraticFunction(std::string equation){
             res[2] = std::stod(equation.substr(x1+1));
         }
     }
-
-    // std::clog << x2 << " " << x1 << "\r\n";    
-    // std::clog << equation.substr(0, x2) << "\r\n";
-    // std::clog << equation.substr(x2+3, x1-x2-3) << "\r\n";
-    // std::clog << equation.substr(x1+1) << "\r\n";
-
-    // for (auto a : res){
-    //     std::clog << a << " ";
-    // }
-    // std::clog << "\r\n";
     
     return res;
 }
@@ -94,13 +83,6 @@ std::vector<Complex> solveQuadraticFunction(const double a, const double b, cons
         res.push_back(x1);
         res.push_back(x2);
     }
-
-    // std::clog << a << " " << b << " " << c << " " << delta << "\r\n";
-    // std::clog << "res:\t\t";
-    // for(auto a : res){
-    //     std::clog << a.getRectangular() << " ";
-    // }
-    // std::clog << "\r\n";
     
     return res;
 }
@@ -113,11 +95,6 @@ std::queue<std::string> getRPN(std::string equation){
 
     while (equation.length() > 0){
         std::string sub = equation.substr(0,1);
-
-        // std::clog << equation << "\t"<< sub << "\r\n";
-        // if(!stack.empty()){
-        //     std::clog << stack.top() << "\t" << stack.size() << "\r\n\n";
-        // }
 
         if(std::find(signs.begin(), signs.end(), sub[0]) != signs.end()){   //znak
             if(!stack.empty()){
@@ -167,7 +144,6 @@ std::queue<std::string> getRPN(std::string equation){
             stack.emplace(sub);
         }else if(sub[0] == ')'){
             while(stack.top() != "("){
-                // std::clog << "top: " << stack.top() << "\r\n";
                 res.emplace(stack.top());
                 stack.pop();
                 if (stack.empty()){
@@ -195,7 +171,6 @@ std::queue<std::string> getRPN(std::string equation){
     
     while(!stack.empty()){
         //check for "(", ")"
-        // std::cout << stack.top() << " "; 
         res.emplace(stack.top());
         stack.pop();
     }
@@ -208,13 +183,6 @@ std::vector<Complex> solveRPN(std::queue<std::string> equation){
     std::stack<Complex> stack{{}};
     const std::array<char, 6> signs = {'-', '+', '*', '/', '^', '='};
 
-    // std::queue<std::string> a = equation;
-    // for (std::string s = a.front(); !a.empty() ; a.pop()){
-    //     std::clog << a.front() << " ";
-    // }
-    // std::clog << "\r\n";
-    
-
     // sprawdzanie czy minus na początku ale nie na początku :c
     while(!equation.empty()){
         if(std::find(signs.begin(), signs.end(), equation.front()[0]) != signs.end()){   //znak
@@ -222,7 +190,6 @@ std::vector<Complex> solveRPN(std::queue<std::string> equation){
             stack.pop();
             Complex b = stack.top();
             stack.pop();
-            // std::clog << a << " " << b << "\t" << stack.size() << "\r\n"; 
             Complex result(0,0);
             switch (equation.front()[0]){
                 case '+':
@@ -244,9 +211,6 @@ std::vector<Complex> solveRPN(std::queue<std::string> equation){
                     std::cerr << "Blad rozwiazywania!\r\n";
                     throw;
             }
-            // std::clog << b.getRectangular() << "\r\n";
-            // std::clog << equation.front() << "\r\n";
-            // std::clog << a.getRectangular() << "\r\n\n";
             stack.emplace(result);    
             
         }else{
@@ -255,15 +219,11 @@ std::vector<Complex> solveRPN(std::queue<std::string> equation){
             }else{
                 stack.push(std::stod(equation.front()));
             }
-            // std::clog << "added: " << stack.top().getRectangular() << "\r\n";
         }
-        // std::clog << equation.front() << "\r\n";
-        // std::clog << "obecnie góra " << stack.top().getRectangular() << "\r\n";
 
         equation.pop();
     }
 
-    // std::clog << stack.top();
     res.push_back(stack.top());
     return res;
 }

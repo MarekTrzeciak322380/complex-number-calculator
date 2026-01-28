@@ -1,7 +1,6 @@
 #include "display.h"
 
 void resultDisplay(const Args &args, const std::vector<Complex> &answers){
-    // std::clog << answers[0].real << "\t" << answers[0].imaginary << "\r\n";
     if(args.containsFlag(Options::quadratic_function)){
         std::cout << args.equation << " = 0 dla:\r\n";
         for(Complex c : answers){

@@ -35,11 +35,6 @@ bool validateEquationChars(const std::string equation, const Options options){
 
 
 Args argsHandler(const int &argc, const char *argv[]){
-    // debug
-    // for (char i = 0; i < argc; i++){
-    //     std::clog << argv[i] << " ";
-    // }
-    // std::clog << "\r\n";
     
     if (argc < 2){
         displayHelp();
@@ -95,7 +90,6 @@ Args argsHandler(const int &argc, const char *argv[]){
         }
     }
     
-    // std::clog << res.in_path.length() << "\t" << res.equation.length();  // debug
     if(res.in_path.length() == 0 && res.equation.length() == 0){    // sprawdzamy czy otrzymaliśmy dane wejściowe
         std::cerr << "Brak danych wejsciowych!\r\n";
     }

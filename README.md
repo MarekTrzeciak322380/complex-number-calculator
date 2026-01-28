@@ -163,3 +163,9 @@ Aplikacja poprawnie realizuje podstawowe założenia: operacje wejścia/wyjścia
 - Użycie innego algorytmu niż ONP, obecnie generuje to dodatkową potrzebę przekształcenia równania z wejścia na postać ONP i dopiero potem obliczenie wyniku. Można od razu przeliczać równanie na wynik.
 - Utworzenie struktury opisującej lepiej operatory przy obsłudze ONP
 
+## Zdjęcia
+<img width="939" height="247" alt="image" src="https://github.com/user-attachments/assets/69c86341-7edc-43e1-9048-05baf0e0d344" />
+<img width="957" height="104" alt="image" src="https://github.com/user-attachments/assets/571e784c-3170-462c-9bf8-2b8169b9572f" />
+<img width="994" height="312" alt="image" src="https://github.com/user-attachments/assets/d307e1fc-e210-4a57-94f7-dc97237b3364" />
+<img width="893" height="111" alt="image" src="https://github.com/user-attachments/assets/4322a72a-72f2-479f-bf53-ab92cb3a068a" />
+

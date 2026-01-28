@@ -2,13 +2,14 @@
 
 void displayHelp(){
    std::cout << "Informacje o programie\r\n";
+   std::cout << "Sposob uzycia: kalkulator [flagi] <rownanie>\r\n";
    std::cout << "Flagi:\r\n";
-   std::cout << "-i <scierzka> - wczytuje dane wejściowe z pliku\r\n";
-   std::cout << "-o <scierzka> - zapisuje wynik do pliku\r\n";
-   std::cout << "-k - rozwiazuje rownanie kwadratowe ([]x^2 + []x + [])\r\n";
-   std::cout << "-a - wyświetla wynik w postaci algebraicznej\r\n";
-   std::cout << "-t - wyświetla wynik w postaci trygonometrycznej\r\n";
-   std::cout << "-w - wyświetla wynik w postaci wykladniczej\r\n";
+   std::cout << "--i <scierzka> - wczytuje dane wejsciowe z pliku\r\n";
+   std::cout << "--o <scierzka> - zapisuje wynik do pliku\r\n";
+   std::cout << "--a - wyswietla wynik w postaci algebraicznej\r\n";
+   std::cout << "--t - wyswietla wynik w postaci trygonometrycznej\r\n";
+   std::cout << "--w - wyswietla wynik w postaci wykladniczej\r\n";
+   std::cout << "--k - znajduje mniejsca zerowe ownania kwadratowego/liniowego pod postacia: [A]x^2+[B]x+[C])\r\n";
 }
 
 bool validateEquationChars(const std::string equation, const Options options){    

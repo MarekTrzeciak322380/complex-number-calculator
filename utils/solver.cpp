@@ -149,8 +149,8 @@ std::queue<std::string> getRPN(std::string equation){
                         }
                         top = stack.top();
                     }
-                }else if(top == "/" || top == "*"){
-                    while(top == "^"){
+                }else if(sub[0] == '*'){
+                    while(top == "/" || top == "*" || top == "^"){
                         res.emplace(top);
                         stack.pop();
                         if(stack.empty()){

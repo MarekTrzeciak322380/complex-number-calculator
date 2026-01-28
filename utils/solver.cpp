@@ -42,7 +42,7 @@ std::array<double, 3> getQuadraticFunction(std::string equation){
         }
     }
 
-    std::clog << equation.substr(x1+1) << "\r\n";
+    // std::clog << equation.substr(x1+1) << "\r\n";
     if(x1 != equation.length() - 1 && x2 != equation.length() - 1){
         if (x2 == x1){
             res[2] = std::stod(equation.substr(x2+3));
@@ -208,11 +208,11 @@ std::vector<Complex> solveRPN(std::queue<std::string> equation){
     std::stack<Complex> stack{{}};
     const std::array<char, 6> signs = {'-', '+', '*', '/', '^', '='};
 
-    std::queue<std::string> a = equation;
-    for (std::string s = a.front(); !a.empty() ; a.pop()){
-        std::clog << a.front() << " ";
-    }
-    std::clog << "\r\n";
+    // std::queue<std::string> a = equation;
+    // for (std::string s = a.front(); !a.empty() ; a.pop()){
+    //     std::clog << a.front() << " ";
+    // }
+    // std::clog << "\r\n";
     
 
     // sprawdzanie czy minus na początku ale nie na początku :c
@@ -244,9 +244,9 @@ std::vector<Complex> solveRPN(std::queue<std::string> equation){
                     std::cerr << "Blad rozwiazywania!\r\n";
                     throw;
             }
-            std::clog << b.getRectangular() << "\r\n";
-            std::clog << equation.front() << "\r\n";
-            std::clog << a.getRectangular() << "\r\n\n";
+            // std::clog << b.getRectangular() << "\r\n";
+            // std::clog << equation.front() << "\r\n";
+            // std::clog << a.getRectangular() << "\r\n\n";
             stack.emplace(result);    
             
         }else{

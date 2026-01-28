@@ -8,7 +8,7 @@ void resultDisplay(const Args &args, const std::vector<Complex> &answers){
             std::cout << "x = " << c.getRectangular() << "\r\n";
         }
     }else{
-        std::cout << "WYNIKI:\r\n";
+        std::cout << args.equation <<  " =\r\n";
         if(args.containsFlag(Options::rectangular) || (!args.containsFlag(Options::rectangular) && !args.containsFlag(Options::polar) && !args.containsFlag(Options::exponential))){
             std::cout << answers[0].getRectangular() + "\r\n"; 
         }

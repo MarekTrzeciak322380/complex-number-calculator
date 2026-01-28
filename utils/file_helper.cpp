@@ -51,7 +51,7 @@ void savingHandler(const Args &args, const std::vector<Complex> &answers){
         return;   
     }
     if(answers.size() == 0){
-        std::clog << "Problem z rozwiązaniem\r\n";
+        std::cerr << "Problem z rozwiązaniem\r\n";
         return;   
     }
 

@@ -31,7 +31,7 @@ int main(int argc, char const *argv[]){
 
     Args args = argsHandler(argc, argv);
     if (args.containsFlag(Options::exit)){
-        std::clog << "EARLY EXIT\r\n";      //debug
+        // std::clog << "EARLY EXIT\r\n";      //debug
         return 0;
     }
     
@@ -39,7 +39,7 @@ int main(int argc, char const *argv[]){
     if (args.shouldExit()){
         return 0;
     }
-    std::cout << "Rownanie na wejsciu: " << args.equation <<"\r\n";     // debug(?)
+    // std::cout << "Rownanie na wejsciu: " << args.equation <<"\r\n";     // debug(?)
 
     std::vector<Complex> answers = solver(args);
 

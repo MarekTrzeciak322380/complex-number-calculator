@@ -63,7 +63,7 @@ void savingHandler(const Args &args, const std::vector<Complex> &answers){
         }
     }else{
         to_save += " =\r\n";
-        if(args.containsFlag(Options::rectangular)){
+        if(args.containsFlag(Options::rectangular) || (!args.containsFlag(Options::rectangular) && !args.containsFlag(Options::polar) && !args.containsFlag(Options::exponential))){
             to_save += answers[0].getRectangular() + "\r\n"; 
         }
         if(args.containsFlag(Options::polar)){

@@ -1,6 +1,8 @@
 #include "solver.h"
 
-
+/// @brief Sprawdza czy liczyć miejsca zerowe czy obliczać wartość równania
+/// @param args
+/// @return 
 std::vector<Complex> solver(const Args &args){
     std::vector<Complex> answers{};
     if(args.containsFlag(Options::quadratic_function)){
@@ -12,6 +14,9 @@ std::vector<Complex> solver(const Args &args){
     return answers;
 }
 
+/// @brief Zwraca liczby przy poszczególnych potęgach 'x' w równaniu kwadratowym
+/// @param equation 
+/// @return 
 std::array<double, 3> getQuadraticFunction(std::string equation){
     std::array<double, 3> res = {};
 
@@ -53,6 +58,11 @@ std::array<double, 3> getQuadraticFunction(std::string equation){
     return res;
 }
 
+/// @brief rozwiązuje równanie kwadratowe
+/// @param a x^2
+/// @param b x
+/// @param c wyraz wolny
+/// @return 
 std::vector<Complex> solveQuadraticFunction(const double a, const double b, const double c){
 
     if (a == 0){    
@@ -87,6 +97,9 @@ std::vector<Complex> solveQuadraticFunction(const double a, const double b, cons
     return res;
 }
 
+/// @brief Zamienia równanie na postać ONP
+/// @param equation 
+/// @return 
 std::queue<std::string> getRPN(std::string equation){
     std::stack<std::string> stack{};
     std::queue<std::string> res{};
@@ -178,6 +191,9 @@ std::queue<std::string> getRPN(std::string equation){
     return res;
 }
 
+/// @brief Rozwiązuje równanie w postaci ONP
+/// @param equation 
+/// @return 
 std::vector<Complex> solveRPN(std::queue<std::string> equation){
     std::vector<Complex> res{};
     std::stack<Complex> stack{{}};

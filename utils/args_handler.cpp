@@ -1,5 +1,8 @@
+/// @file args_handler.cpp
+/// @brief Walidacja i interpretacja argumentów użytkownika
 #include "args_handler.h"
 
+/// @brief Wyświetla informacje o programie
 void displayHelp(){
    std::cout << "Informacje o programie\r\n";
    std::cout << "Sposob uzycia: kalkulator [flagi] <rownanie>\r\n";
@@ -12,6 +15,10 @@ void displayHelp(){
    std::cout << "--k - znajduje mniejsca zerowe ownania kwadratowego/liniowego pod postacia: [A]x^2+[B]x+[C])\r\n";
 }
 
+/// @brief Sprawdza czy znaki w podanym przez użytkownika równaniu są poprawne
+/// @param equation 
+/// @param options 
+/// @return 
 bool validateEquationChars(const std::string equation, const Options options){    
     if ((bool) (options & Options::quadratic_function)){
         const std::array<char, 20> chars = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '(', ')', '+', '-', '*', '/', '^', '=', 'x'};
@@ -33,7 +40,10 @@ bool validateEquationChars(const std::string equation, const Options options){
     return true;
 }
 
-
+/// @brief Rozpoznaje argumenty podae przy wywołaniu i pakuje je do instancji Args
+/// @param argc 
+/// @param argv 
+/// @return 
 Args argsHandler(const int &argc, const char *argv[]){
     
     if (argc < 2){

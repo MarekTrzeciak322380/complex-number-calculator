@@ -1,5 +1,11 @@
+/// @file file_helper.cpp
+/// @brief Obsługa plików wyjścia/wejścia
 #include "file_helper.h"
 
+/// @brief Wczytuje równanie z pliku
+/// @param path ścierzka do pliku 
+/// @param equation równanie
+/// @return Zwraca prawde jeśli wczytanie się powiodło
 bool loadFromFile(std::string path, std::string &equation){
     std::fstream file(path, std::ios::in);
     if(!file.good()){
@@ -16,6 +22,8 @@ bool loadFromFile(std::string path, std::string &equation){
     return true;
 }
 
+/// @brief Sprawdza czy trzeba wczytać dane z pliku
+/// @param args 
 void inputFileHandler(Args &args){
     if (args.in_path.length() == 0){
         return;
@@ -33,6 +41,9 @@ void inputFileHandler(Args &args){
     }
 }
 
+/// @brief Zapisuje string do pliku
+/// @param args 
+/// @param str 
 void saveToFile(const Args &args, std::string str){
     std::fstream file(args.out_path, std::ios::out);
     if(!file.good()){
@@ -46,6 +57,9 @@ void saveToFile(const Args &args, std::string str){
     file.close();
 }
 
+/// @brief Sprawdza czy zapisać do pliku, generuje string z wynikiem
+/// @param args 
+/// @param answers 
 void savingHandler(const Args &args, const std::vector<Complex> &answers){
     if(args.out_path.length() == 0){
         return;   

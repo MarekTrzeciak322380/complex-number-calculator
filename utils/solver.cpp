@@ -1,8 +1,10 @@
+/// @file solver.cpp
+/// @brief Rozwiązuje równania
 #include "solver.h"
 
 /// @brief Sprawdza czy liczyć miejsca zerowe czy obliczać wartość równania
 /// @param args
-/// @return 
+/// @return rozwiązania
 std::vector<Complex> solver(const Args &args){
     std::vector<Complex> answers{};
     if(args.containsFlag(Options::quadratic_function)){
@@ -58,7 +60,7 @@ std::array<double, 3> getQuadraticFunction(std::string equation){
     return res;
 }
 
-/// @brief rozwiązuje równanie kwadratowe
+/// @brief Rozwiązuje równanie kwadratowe
 /// @param a x^2
 /// @param b x
 /// @param c wyraz wolny

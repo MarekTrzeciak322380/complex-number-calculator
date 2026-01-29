@@ -4,7 +4,7 @@
 #include <iostream>
 #include <math.h>
 
-
+/// @brief Liczba zespolona
 class Complex{
 
 public:
@@ -19,7 +19,6 @@ public:
     std::string getRectangular() const;
     std::string getPolar() const;
     std::string getExponential() const;
-
 
     Complex operator+(const Complex &c){
         return Complex(real + c.real, imaginary + c.imaginary);

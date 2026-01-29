@@ -1,5 +1,10 @@
+/// @file display.cpp
+/// @brief Obsługa wyświetlania wyników w konsoli
 #include "display.h"
 
+/// @brief Wyświetla wyniki w konsoli
+/// @param args 
+/// @param answers 
 void resultDisplay(const Args &args, const std::vector<Complex> &answers){
     if(args.containsFlag(Options::quadratic_function)){
         std::cout << args.equation << " = 0 dla:\r\n";
